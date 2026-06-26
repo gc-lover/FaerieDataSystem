@@ -1,4 +1,4 @@
-﻿// Copyright Guy (Drakynfly) Lundvall. All Rights Reserved.
+// Copyright Guy (Drakynfly) Lundvall. All Rights Reserved.
 
 #include "FaerieDataSystemEditorModule.h"
 
@@ -13,12 +13,12 @@
 
 void IFaerieDataSystemEditorModuleBase::StartupModule()
 {
-    FCoreDelegates::OnPostEngineInit.AddRaw(this, &IFaerieDataSystemEditorModuleBase::OnPostEngineInit);
+    FCoreDelegates::GetOnPostEngineInit().AddRaw(this, &IFaerieDataSystemEditorModuleBase::OnPostEngineInit);
 }
 
 void IFaerieDataSystemEditorModuleBase::ShutdownModule()
 {
-    FCoreDelegates::OnPostEngineInit.RemoveAll(this);
+    FCoreDelegates::GetOnPostEngineInit().RemoveAll(this);
 
     if (FModuleManager::Get().IsModuleLoaded(TEXT("PropertyEditor")))
     {
